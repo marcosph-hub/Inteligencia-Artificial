@@ -14,6 +14,10 @@ void FileData() {
 
   std::cout << "Introduzca el fichero de configuración config.txt" << std::endl;
   std::cin >> filename;
+  while(filename != "config.txt") {
+  std::cout << "Error al introducir el nombre del fichero, porfavor introduzca el fichero de configuración config.txt" << std::endl;
+  std::cin >> filename;
+  }
   std::ifstream file(filename.c_str());
   if (!file.good()) {
     std::cerr << "Error en la apertura del fichero" << std::endl;
@@ -24,6 +28,8 @@ void FileData() {
   getline(file,column_file);
   int row = std::stoi(row_file);
   int columns = std::stoi(column_file);
+  assert(row > 0);
+  assert(columns > 0);
   Board file_board(row,columns);
 
   //INSERTAR POS DEL COCHE
@@ -34,6 +40,8 @@ void FileData() {
   }
   int row_taxi = origin_v[0];
   int col_taxi = origin_v[1];
+  assert(row_taxi > 0);
+  assert(col_taxi > 0);
   file_board.ManualInsertTaxi(row_taxi, col_taxi);
 
  //INSERTAR DESTINO
@@ -44,6 +52,8 @@ void FileData() {
  }
   int row_dest = dest_v[0];
   int col_dest = dest_v[1];
+  assert(row_dest > 0);
+  assert(col_dest > 0);
   file_board.ManualDestination(row_dest,col_dest);
 
  //INSERTAR OBSTACULOS
@@ -55,9 +65,12 @@ void FileData() {
   }
     int row_obst = obst_v[0];
     int col_obst = obst_v[1];
+    assert(row_obst > 0);
+    assert(col_obst > 0);
     file_board.FillManual(row_obst,col_obst);
     obst_v.clear();
  }
+ std::cout << "\033[2J\033[1;1H";
  file_board.Write();
 
 }
@@ -93,8 +106,10 @@ int main () {
       case 1: { //Entorno Manual
         std::cout << "Introduzca las dimensiones del entorno.\n Ancho del entorno (filas):\t"; 
         std::cin >> rows;
+        assert(rows > 0);
         std::cout << "Largo del entorno (columnas):\t";
         std::cin >> columns;
+        assert(columns > 0);
         Board manual_board(rows, columns);
         
         std::cout << "Elija como desea meter los obstaculos\n(1) Manual\n(2) Aleatorio" << std::endl;
@@ -102,6 +117,7 @@ int main () {
         if (obst_option == 1) { // Obstaculos Manuales mediante un % de obstaculos (más facil)
           std::cout << "Ponga el %(nº entero) de obstaculos que desea que haya\n" << std::endl;
           std::cin >> percent;
+          assert(percent > 0);
           manual_board.FillByPercent(percent);
         } else  {
           manual_board.RandomFill();
@@ -113,8 +129,10 @@ int main () {
         if (dest_option == 1) {
           std::cout << "Introduzca donde quiere que se encuentre el destino:\nIntroduzca la coordenada 'x': ";
           std::cin >> xcoord;
+          assert(xcoord > 0);
           std::cout << " y la coordenada 'y': ";
           std::cin >> ycoord;
+          assert(ycoord > 0);
           std::cout << std::endl;
           manual_board.ManualDestination(xcoord, ycoord);
         } else {
@@ -125,13 +143,16 @@ int main () {
         if (orig_option == 1) {
           std::cout << "Introduzca donde quiere que se encuentre el origen:\nIntroduzca la coordenada 'x': ";
           std::cin >> xcoord;
+          assert(xcoord > 0);
           std::cout << " y la coordenada 'y': ";
           std::cin >> ycoord;
+          assert(ycoord > 0);
           std::cout << std::endl;
           manual_board.ManualInsertTaxi(xcoord, ycoord);
         } else {
           manual_board.RandomInsertTaxi();
         }
+        std::cout << "\033[2J\033[1;1H";
         manual_board.Write();
       }
       break;
@@ -146,6 +167,7 @@ int main () {
         if (obst_option == 1) { // Obstaculos Manuales mediante un % de obstaculos (más facil)
           std::cout << "Ponga el %(nº entero) de obstaculos que desea que haya\n" << std::endl;
           std::cin >> percent;
+          assert(percent > 0);
           default_board.FillByPercent(percent);
         } else  {
           default_board.RandomFill();
@@ -157,8 +179,10 @@ int main () {
         if (dest_option == 1) {
           std::cout << "Introduzca donde quiere que se encuentre el destino:\nIntroduzca la coordenada 'x': ";
           std::cin >> xcoord;
+          assert(xcoord > 0);
           std::cout << " y la coordenada 'y': ";
           std::cin >> ycoord;
+          assert(ycoord > 0);
           std::cout << std::endl;
           default_board.ManualDestination(xcoord, ycoord);
 
@@ -170,13 +194,16 @@ int main () {
         if (orig_option == 1) {
           std::cout << "Introduzca donde quiere que se encuentre el origen:\nIntroduzca la coordenada 'x': ";
           std::cin >> xcoord;
+          assert(xcoord > 0);
           std::cout << " y la coordenada 'y': ";
           std::cin >> ycoord;
+          assert(ycoord > 0);
           std::cout << std::endl;
           default_board.ManualInsertTaxi(xcoord, ycoord);
         } else {
           default_board.RandomInsertTaxi();
         }
+        std::cout << "\033[2J\033[1;1H";
         default_board.Write();
       }
       break;
