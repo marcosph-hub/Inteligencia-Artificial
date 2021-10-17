@@ -85,7 +85,10 @@ void Board::RandomFill() {
 }
 
 void Board::FillManual(int x, int y){
-  tableboard[x][y] = "O";
+  if (tableboard[x][y] == " "){
+    tableboard[x][y] = "0";
+  }
+
 }
 
 void Board::RandomDestination() {
@@ -99,7 +102,7 @@ void Board::ManualDestination(int x, int y){
 }
 
 void Board::ManualInsertTaxi(int x, int y) {
-  prueba.SetTaxiPlace(x,y);
+  car.SetTaxiPlace(x,y);
 }
 
 void Board::RandomInsertTaxi(){
@@ -108,15 +111,15 @@ void Board::RandomInsertTaxi(){
   int rand_col;
   rand_row = 1 + rand() % (rows -2);
   rand_col = 1 + rand() % (columns -2);
-  prueba.SetTaxiPlace(rand_row, rand_col);
+  car.SetTaxiPlace(rand_row, rand_col);
 }
 
 
 void Board::Write() {
   for (int i=0; i < rows; i++){
     for (int j=0; j < columns; j++){
-      if ((i == prueba.GetXCoord()) && (j == prueba.GetYCoord())) {
-        std::cout << YLW << prueba.GetBody() << " ";
+      if ((i == car.GetXCoord()) && (j == car.GetYCoord())) {
+        std::cout << YLW << car.GetBody() << " ";
       } else if (tableboard[i][j] == "F") {
         std::cout << GRN << tableboard[i][j] << " ";
       } else {

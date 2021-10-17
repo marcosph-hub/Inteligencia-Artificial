@@ -5,15 +5,17 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include <conio.h>
+//#include <conio.h>
 #include <fstream>
+#include <sstream>
+#include <vector>
 
 #include "taxi.h"
 
 class Board {
   private:
     std::string **tableboard;
-    Taxi prueba;
+    Taxi car;
     int rows;
     int columns;
   
