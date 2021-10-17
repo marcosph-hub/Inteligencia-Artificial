@@ -129,18 +129,3 @@ void Board::Write() {
     std::cout << std::endl;
   }
 }
-
-
-/*
-Board::Board(int option, std::string filename) { 
-  rows = 22;    //para que sea 20 x 20 hay que añadir 2 filas y 2 col extras para señalizar los bordes 
-  columns = 22;
-  tableboard = new std::string*[rows];
-  for (int iterator = 0; iterator < rows; iterator++) {
-    tableboard[iterator] = new std::string[columns];
-  }
-  if (option == 2) {
-    ManualFillBoard(filename);
-  }
-}
-*/

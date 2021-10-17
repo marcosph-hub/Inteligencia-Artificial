@@ -114,7 +114,7 @@ int main () {
         
         std::cout << "Elija como desea meter los obstaculos\n(1) Manual\n(2) Aleatorio" << std::endl;
         std::cin >> obst_option;
-        if (obst_option == 1) { // Obstaculos Manuales mediante un % de obstaculos (más facil)
+        if (obst_option == 1) { 
           std::cout << "Ponga el %(nº entero) de obstaculos que desea que haya\n" << std::endl;
           std::cin >> percent;
           assert(percent > 0);
@@ -164,7 +164,7 @@ int main () {
         Board default_board;
         std::cout << "Elija como desea meter los obstaculos\n(1) Manual\n(2) Aleatorio" << std::endl;
         std::cin >> obst_option;
-        if (obst_option == 1) { // Obstaculos Manuales mediante un % de obstaculos (más facil)
+        if (obst_option == 1) { 
           std::cout << "Ponga el %(nº entero) de obstaculos que desea que haya\n" << std::endl;
           std::cin >> percent;
           assert(percent > 0);

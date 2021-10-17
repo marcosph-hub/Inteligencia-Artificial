@@ -21,7 +21,6 @@ class Board {
   
   public:
     Board();
-   //Board(int option, std::string filename);
     Board(int row_parameter, int col_parameter);
     ~Board();
     void Create_Board();
