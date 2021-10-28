@@ -26,19 +26,6 @@ bool Cell::get_IsVisited() {
   return is_visited;
 }
 
-void Cell::set_CellValue(char parameter) {
-  cell_value = parameter;
-}
-
-void Cell::set_OpenCell(bool parameter) {
-  open_cell = parameter;
-}
-
-void Cell::set_IsVisited(bool parameter) {
-  is_visited = parameter;
-}
-
-
 std::pair<int,int> Cell::get_Coordinates() {
   return coordinates;
 }
@@ -49,6 +36,18 @@ int Cell::get_XCoord() {
 
 int Cell::get_YCoord() {
   return coordinates.second;
+}
+
+int Cell::get_Cost() {
+  return cost;
+}
+
+int Cell::get_Heuristic_Value() {
+  return heuristic_value;
+}
+
+int Cell::get_Evaluation_Function() {
+  return evaluation_function;
 }
 
 void Cell::set_Coordinates(std::pair<int,int> param_coords) {
@@ -63,8 +62,32 @@ void Cell::set_YCoord(int y_param) {
   coordinates.second = y_param;
 }
 
+void Cell::set_CellValue(char parameter) {
+  cell_value = parameter;
+}
+
+void Cell::set_OpenCell(bool parameter) {
+  open_cell = parameter;
+}
+
+void Cell::set_IsVisited(bool parameter) {
+  is_visited = parameter;
+}
+
+void Cell::set_Cost(int cost_param) {
+  cost = cost_param;
+}
+
+void Cell::set_Heuristic_Value(int heur_param) {
+  heuristic_value = heur_param;
+}
+
+void Cell::set_Evaluation_Function(int eval_param) {
+  evaluation_function = eval_param;
+}
+
 std::ostream& operator<<(std::ostream &os, Cell &cell_) {
-  os << cell_.get_CellValue() << std::endl;
+  os << cell_.get_CellValue();
   return os;
 }
 

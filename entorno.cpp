@@ -11,6 +11,14 @@ Board::Board() {
   for (int iterator = 0; iterator < rows; iterator++) {
     tableboard[iterator] = new Cell[columns];
   }
+  for (int row_iterator = 0; row_iterator < rows; ++row_iterator) {
+    for (int col_iterator = 0; col_iterator < columns; ++col_iterator) {
+      std::pair<int,int> coords;
+      coords.first = row_iterator;
+      coords.second = col_iterator;
+      tableboard[row_iterator][col_iterator].set_Coordinates(coords);
+    }
+  }
   Create_Board();
 }
 
@@ -21,9 +29,16 @@ Board::Board(int row_parameter, int col_parameter) {
   for (int iterator = 0; iterator < rows; iterator++) {
     tableboard[iterator] = new Cell[columns];
   }
+  for (int row_iterator = 0; row_iterator < rows; ++row_iterator) {
+    for (int col_iterator = 0; col_iterator < columns; ++col_iterator) {
+      std::pair<int,int> coords;
+      coords.first = row_iterator;
+      coords.second = col_iterator;
+      tableboard[row_iterator][col_iterator].set_Coordinates(coords);
+    }
+  }
   Create_Board();
 }
-
 
 Board::~Board(){
   for (int iterator = 0; iterator < rows; iterator++) {
@@ -129,3 +144,25 @@ void Board::Write() {
     std::cout << std::endl;
   }
 }
+
+/*
+void Board::WriteCoords() {
+  for (int i=0; i < rows; i++){
+    for (int j=0; j < columns; j++){
+      if ((i == car.GetXCoord()) && (j == car.GetYCoord())) {
+        std::cout << YLW << car.GetBody() << ' ';
+      } else if (tableboard[i][j] == 'F') {
+        std::cout << GRN << tableboard[i][j] << ' ';
+      } else {
+        std::cout << NC << tableboard[i][j] << ' ';
+      }
+    }
+    std::cout << std::endl;
+  }
+  for(int i=0;i<rows;++i){
+    for(int j=0;j<columns;++j){
+        std::cout << tableboard[i][j].get_XCoord() << "," << tableboard[i][j].get_YCoord();
+    }
+  }
+}
+*/

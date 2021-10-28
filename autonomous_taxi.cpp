@@ -89,22 +89,11 @@ int main () {
   int percent;
   int xcoord;
   int ycoord;
+  int movement;
 
-//**************************************************************
-        char a = '>';
-        std::pair<int,int> c;
-        c.first = 2;
-        c.second = 4;
-        Cell tester(a);
-        tester.set_IsVisited(false);
-        tester.set_OpenCell(false);
-        tester.set_Coordinates(c);
-        std::cout << "mostrando cell: " << a << std::endl; 
-        std::cout << tester.get_CellValue() << std::endl;
-        tester.set_CellValue('^');
-        std::cout << tester.get_IsVisited() << tester.get_OpenCell() << 
-        /*tester.get_Coordinates()*/ <<  tester.get_XCoord() << std::endl;
-//**************************************************************
+  std::cout << "Describa como desea que sea los movimientos del taxi: " << std::endl;
+  std::cout << "(1) Contempla 4 Movimientos (N, S, E, O)\n(2) Contempla 8 Movimientos (N, S, E, O, NE, SE, NO, SO)" << std::endl;
+  std::cin >> movement;
   std::cout << "Elija como desea crear el Entorno: " << std::endl;
   std::cout << "(1) Por Fichero\n(2) Manual\n(0) Salir" << std::endl;
   std::cin >> option;
@@ -168,6 +157,7 @@ int main () {
           manual_board.RandomInsertTaxi();
         }
         std::cout << "\033[2J\033[1;1H";
+        //llamada a la clase ALGORITHM
         manual_board.Write();
       }
       break;
@@ -218,8 +208,10 @@ int main () {
         } else {
           default_board.RandomInsertTaxi();
         }
+        //llamada a la clase ALGORITHM
         std::cout << "\033[2J\033[1;1H";
         default_board.Write();
+        //default_board.WriteCoords();
       }
       break;
     }
@@ -227,3 +219,18 @@ int main () {
 
 }
 
+/*
+        char a = '>';
+        std::pair<int,int> c;
+        c.first = 2;
+        c.second = 4;
+        Cell tester(a);
+        tester.set_IsVisited(false);
+        tester.set_OpenCell(false);
+        tester.set_Coordinates(c);
+        std::cout << "mostrando cell: " << a << std::endl; 
+        std::cout << tester.get_CellValue() << std::endl;
+        tester.set_CellValue('^');
+        std::cout << tester.get_IsVisited() << tester.get_OpenCell() << 
+        tester.get_Coordinates()<< tester.get_XCoord() << std::endl;
+*/

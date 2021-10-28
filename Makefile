@@ -10,5 +10,8 @@ taxi.o: taxi.cpp
 cell.o: cell.cpp
 	g++ -std=c++14 -g -Wall -o cell cell.cpp
 
+algorithm.o: algorithm.cpp	
+	g++ -std=c++14 -g -Wall -o algorithm algorithm.cpp
+
 clean:
 	rm -f autonomous_taxi *.o

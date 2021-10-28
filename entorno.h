@@ -20,8 +20,7 @@ class Board {
     Taxi car;
     int rows;
     int columns;
-    
-  
+
   public:
     Board();
     Board(int row_parameter, int col_parameter);
@@ -36,4 +35,6 @@ class Board {
     void ManualInsertTaxi(int x, int y);
     void RandomInsertTaxi();
 
+    //*****DELETE******
+    //void WriteCoords();
 };
