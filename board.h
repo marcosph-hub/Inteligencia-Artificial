@@ -12,7 +12,6 @@
 
 #include "taxi.h"
 #include "cell.h"
-#include "algorithm.h"
 
 
 class Board {
@@ -26,6 +25,10 @@ class Board {
     Board();
     Board(int row_parameter, int col_parameter);
     ~Board();
+    Cell** get_tableboard();
+    Taxi get_taxi();
+    int get_rows();
+    int get_columns();
     void Create_Board();
     void Write();
     void RandomFill();
