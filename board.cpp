@@ -41,10 +41,18 @@ Board::Board(int row_parameter, int col_parameter) {
 }
 
 Board::~Board(){
+  
   for (int iterator = 0; iterator < rows; iterator++) {
     delete [] tableboard[iterator];
   }
   delete [] tableboard;
+  
+ /*
+ for (int iterator = 0; iterator < rows; ++iterator) {
+   free(tableboard[iterator]);
+ }
+ free(tableboard);
+ */
 }
 
 Cell** Board::get_tableboard() {
@@ -61,6 +69,14 @@ int Board::get_rows() {
 
 int Board::get_columns() {
   return columns;
+}
+
+Cell Board::get_destination() {
+  return destination;
+}
+
+Cell Board::get_start() {
+  return start;
 }
 
 void Board::Create_Board() {
@@ -126,14 +142,20 @@ void Board::RandomDestination() {
   int rand_row = 1 + rand() % (rows -2);
   int rand_col = 1 + rand() % (columns -2);
   tableboard[rand_row][rand_col] = 'F';
+  destination.set_XCoord(rand_row);
+  destination.set_YCoord(rand_col);
 }
 
 void Board::ManualDestination(int x, int y){
   tableboard[x][y] = 'F';
+  destination.set_XCoord(x);
+  destination.set_YCoord(y);
 }
 
 void Board::ManualInsertTaxi(int x, int y) {
   car.SetTaxiPlace(x,y);
+  start.set_XCoord(x);
+  start.set_YCoord(y);
 }
 
 void Board::RandomInsertTaxi(){
@@ -143,6 +165,8 @@ void Board::RandomInsertTaxi(){
   rand_row = 1 + rand() % (rows -2);
   rand_col = 1 + rand() % (columns -2);
   car.SetTaxiPlace(rand_row, rand_col);
+  start.set_XCoord(rand_row);
+  start.set_YCoord(rand_col);
 }
 
 

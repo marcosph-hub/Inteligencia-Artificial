@@ -9,6 +9,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <utility>
 
 #include "taxi.h"
 #include "cell.h"
@@ -18,6 +19,8 @@ class Board {
   private:
     Cell **tableboard;
     Taxi car;
+    Cell start;
+    Cell destination;
     int rows;
     int columns;
 
@@ -29,6 +32,8 @@ class Board {
     Taxi get_taxi();
     int get_rows();
     int get_columns();
+    Cell get_destination();
+    Cell get_start();
     void Create_Board();
     void Write();
     void RandomFill();

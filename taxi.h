@@ -14,6 +14,7 @@ class Taxi {
     void SetBody(char body_parametre);
     void SetTaxiPlace(int x, int y);
     char GetBody();
+    std::pair<int,int> get_TaxiPlace();
     int GetXCoord();
     int GetYCoord();
 };

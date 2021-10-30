@@ -35,3 +35,7 @@ int Taxi::GetYCoord() {
   return taxi_place.second;
 }
 
+std::pair<int,int> Taxi::get_TaxiPlace() {
+  return taxi_place;
+}
+

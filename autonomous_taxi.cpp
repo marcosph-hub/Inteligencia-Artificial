@@ -1,5 +1,5 @@
-#include "entorno.h"
-
+#include "board.h"
+#include "algorithm.h"
 
 void FileData() {        
   std::string filename;
@@ -159,6 +159,7 @@ int main () {
         std::cout << "\033[2J\033[1;1H";
         //llamada a la clase ALGORITHM
         manual_board.Write();
+        Algorithm tester(manual_board);
       }
       break;
     
@@ -211,7 +212,8 @@ int main () {
         //llamada a la clase ALGORITHM
         std::cout << "\033[2J\033[1;1H";
         default_board.Write();
-        //default_board.WriteCoords();
+        Algorithm alg_test(default_board);
+        
       }
       break;
     }

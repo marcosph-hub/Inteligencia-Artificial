@@ -12,11 +12,14 @@ class Algorithm {
   private:
   std::vector<Cell> open_cells_list;
   std::vector<Cell> close_cells_list;
-  std::pair<int,int> start;
-  std::pair<int,int> destination;
+  Cell start;
+  Cell destination;
+  int cost;
 
   public:
-  Algorithm(Board tableboard);
-
+  Algorithm(Board& tableboard);
+  void A_Star(Cell current_cell);
+  bool is_destination(Cell cell_);
+  void functions_update(Cell current_cell);
   
 };

@@ -95,6 +95,9 @@ Cell& Cell::operator=(const Cell &cell_) {
   this->cell_value = cell_.cell_value;
   this->is_visited = cell_.is_visited;
   this->open_cell = cell_.open_cell;
+  this->cost = cell_.cost;
+  this->heuristic_value = cell_.heuristic_value;
+  this->evaluation_function = cell_.evaluation_function;
   return *this;
 }
 
@@ -102,7 +105,10 @@ bool Cell::operator==(const Cell &cell_) const {
   if(this->cell_value == cell_.cell_value &&
     this->open_cell == cell_.open_cell &&
     this->is_visited == cell_.is_visited &&
-    this->coordinates == cell_.coordinates) { return true; }
+    this->coordinates == cell_.coordinates &&
+    this->cost == cell_.cost &&
+    this->heuristic_value == cell_.heuristic_value &&
+    this->evaluation_function == cell_.evaluation_function) { return true; }
     return false;
 }
 
